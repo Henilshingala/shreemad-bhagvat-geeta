@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>श्रीमद्भगवद्गीता - अध्याय चयन</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            text-align: center;
+            font-size: clamp(20px, 4vw, 40px);
+            color: red;
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #000000 100%);
+            background-size: 200% 200%;
+            font-style: oblique;
+            min-height: 100vh;
+            overflow-x: hidden;
+            animation: gradientShift 4s ease-in-out infinite;
+        }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+        }
+
+        /* Floating Om symbols */
+        .floating-om {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .om-symbol {
+            position: absolute;
+            font-size: clamp(30px, 6vw, 50px);
+            color: rgba(255, 165, 0, 0.1);
+            animation: floatOm 8s infinite linear;
+        }
+
+        .om-symbol:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .om-symbol:nth-child(2) { left: 30%; animation-delay: 2s; }
+        .om-symbol:nth-child(3) { left: 50%; animation-delay: 4s; }
+        .om-symbol:nth-child(4) { left: 70%; animation-delay: 6s; }
+        .om-symbol:nth-child(5) { left: 90%; animation-delay: 1s; }
+
+        @keyframes floatOm {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.3;
+            }
+            90% {
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        h1 {
+            font-size: clamp(30px, 6vw, 50px);
+            margin: clamp(30px, 6vw, 50px) 0;
+            text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.5);
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            from { 
+                text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.5);
+                transform: scale(1);
+            }
+            to { 
+                text-shadow: 2px 2px 8px rgba(255, 0, 0, 0.5), 0 0 20px rgba(255, 0, 0, 0.3);
+                transform: scale(1.02);
+            }
+        }
+
+        .column {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: clamp(15px, 3vw, 20px);
+            justify-content: center;
+            align-items: center;
+            max-width: 1400px;
+            margin: clamp(30px, 6vw, 50px) auto;
+            padding: 0 clamp(15px, 3vw, 30px);
+        }
+
+        .button {
+            height: clamp(100px, 20vw, 150px);
+            width: 100%;
+            max-width: 600px;
+            background: linear-gradient(135deg, #000000, #1a1a1a);
+            font-size: clamp(16px, 3vw, 25px);
+            color: yellow;
+            border-radius: 15px;
+            border: 3px solid orange;
+            margin: 0;
+            cursor: pointer;
+            animation: slideIn 0.8s ease-in-out forwards;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(255, 165, 0, 0.2);
+        }
+
+        .button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 165, 0, 0.2), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .button:hover::before {
+            left: 100%;
+        }
+
+        .button:nth-child(1) { animation-delay: 0.1s; }
+        .button:nth-child(2) { animation-delay: 0.2s; }
+        .button:nth-child(3) { animation-delay: 0.3s; }
+        .button:nth-child(4) { animation-delay: 0.4s; }
+        .button:nth-child(5) { animation-delay: 0.5s; }
+        .button:nth-child(6) { animation-delay: 0.6s; }
+        .button:nth-child(7) { animation-delay: 0.7s; }
+        .button:nth-child(8) { animation-delay: 0.8s; }
+        .button:nth-child(9) { animation-delay: 0.9s; }
+        .button:nth-child(10) { animation-delay: 1.0s; }
+        .button:nth-child(11) { animation-delay: 1.1s; }
+        .button:nth-child(12) { animation-delay: 1.2s; }
+        .button:nth-child(13) { animation-delay: 1.3s; }
+        .button:nth-child(14) { animation-delay: 1.4s; }
+        .button:nth-child(15) { animation-delay: 1.5s; }
+        .button:nth-child(16) { animation-delay: 1.6s; }
+        .button:nth-child(17) { animation-delay: 1.7s; }
+        .button:nth-child(18) { animation-delay: 1.8s; }
+
+        @keyframes slideIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .button:hover {
+            background: linear-gradient(135deg, orange, #ff8c00);
+            color: black;
+            border-color: yellow;
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 15px 35px rgba(255, 165, 0, 0.4);
+        }
+
+        .button:active {
+            transform: translateY(-2px) scale(1.01);
+        }
+
+        .button a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 100%;
+            padding: clamp(10px, 2vw, 15px);
+            font-weight: 600;
+            line-height: 1.4;
+        }
+
+        .button:hover a {
+            color: black;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .column {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                padding: 0 15px;
+            }
+
+            .button {
+                height: clamp(80px, 15vw, 120px);
+                font-size: clamp(14px, 2.5vw, 18px);
+            }
+
+            h1 {
+                font-size: clamp(24px, 5vw, 36px);
+                margin: 20px 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .button {
+                height: 70px;
+                font-size: 14px;
+            }
+
+            h1 {
+                font-size: 20px;
+                margin: 15px 10px;
+            }
+
+            .column {
+                padding: 0 10px;
+            }
+        }
+
+        /* Scroll animations */
+        .scroll-animate {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .scroll-animate.animate {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Loading animation */
+        .loading {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border: 3px solid rgba(255, 165, 0, 0.3);
+            border-top: 3px solid orange;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div class="floating-om">
+        <div class="om-symbol">ॐ</div>
+        <div class="om-symbol">ॐ</div>
+        <div class="om-symbol">ॐ</div>
+        <div class="om-symbol">ॐ</div>
+        <div class="om-symbol">ॐ</div>
+    </div>
+
+    <h1>आप जिस अध्याय को पढ़ना चाहते हैं उस पर क्लिक करें</h1>
+    
+    <div class="column">
+        <button class="button scroll-animate"><a href="a01.html">प्रथम अध्याय - अर्जुन विषाद योग</a></button>
+        <button class="button scroll-animate"><a href="a02.html">दूसरा अध्याय - सांख्य योग</a></button>
+        <button class="button scroll-animate"><a href="a03.html">तीसरा अध्याय - कर्म योग</a></button>
+        <button class="button scroll-animate"><a href="a04.html">चौथा अध्याय - ज्ञान कर्म संन्यास योग</a></button>
+        <button class="button scroll-animate"><a href="a05.html">पांचवां अध्याय - कर्म संन्यास योग</a></button>
+        <button class="button scroll-animate"><a href="a06.html">छठा अध्याय - आत्म संयम योग</a></button>
+        <button class="button scroll-animate"><a href="a07.html">सातवां अध्याय - ज्ञान विज्ञान योग</a></button>
+        <button class="button scroll-animate"><a href="a08.html">आठवां अध्याय - अक्षर ब्रह्म योग</a></button>
+        <button class="button scroll-animate"><a href="a09.html">नौवां अध्याय - राज विद्या राज गुह्य योग</a></button>
+        <button class="button scroll-animate"><a href="a10.html">दसवां अध्याय - विभूति योग</a></button>
+        <button class="button scroll-animate"><a href="a11.html">ग्यारहवां अध्याय - विश्वरूप दर्शन योग</a></button>
+        <button class="button scroll-animate"><a href="a12.html">बारहवां अध्याय - भक्ति योग</a></button>
+        <button class="button scroll-animate"><a href="a13.html">तेरहवां अध्याय - क्षेत्र-क्षेत्रज्ञ विभाग योग</a></button>
+        <button class="button scroll-animate"><a href="a14.html">चौदहवां अध्याय - गुणत्रय विभाग योग</a></button>
+        <button class="button scroll-animate"><a href="a15.html">पंद्रहवां अध्याय - पुरुषोत्तम योग</a></button>
+        <button class="button scroll-animate"><a href="a16.html">सोलहवां अध्याय - दैवासुर सम्पद विभाग योग</a></button>
+        <button class="button scroll-animate"><a href="a17.html">सत्रहवां अध्याय - श्रद्धा त्रय विभाग योग</a></button>
+        <button class="button scroll-animate"><a href="a18.html">अठारहवां अध्याय - मोक्ष संन्यास योग</a></button>
+    </div>
+
+    <script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.scroll-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Add click animation to buttons
+        document.querySelectorAll('.button').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Add loading animation
+                const originalContent = this.innerHTML;
+                this.innerHTML = '<span class="loading"></span> लोड हो रहा है...';
+                
+                // Simulate loading delay
+                setTimeout(() => {
+                    this.innerHTML = originalContent;
+                }, 1000);
+            });
+        });
+
+        // Parallax effect for floating Om symbols
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const omSymbols = document.querySelectorAll('.om-symbol');
+            omSymbols.forEach((symbol, index) => {
+                symbol.style.transform = `translateY(${scrolled * (0.1 + index * 0.05)}px)`;
+            });
+        });
+    </script>
+</body>
+</html>
